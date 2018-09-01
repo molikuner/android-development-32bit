@@ -16,14 +16,15 @@ Those are in `/lib/x86_64-linux-gnu`.
 Obviously these libraries won't be found on a 32bit system because they are for 64bit.
 This means installing them with apt will be difficult (at least I don't know how).
 
-- You will need [libc6](https://packages.debian.org/stretch/amd64/libc6) and [libc6-dev](https://packages.debian.org/stretch/amd64/libc6-dev).
+- You will need [libc6](https://packages.debian.org/stretch/amd64/libc6), [libc6-dev](https://packages.debian.org/stretch/amd64/libc6-dev) and [libgcc1](https://packages.debian.org/stretch/amd64/libgcc1).
 You should download the deb packages for your system (64bit instead of 32bit) into a new working folder.
 - Create a folder `fakeInstall` in this folder.
 - Now run:
 
   ```bash
   dpkg -x libc6_2.24-11+deb9u3_amd64.deb fakeInstall
-  dpkg -x libc6-dev_2.24-11+deb9u3_amd64.deb fakeInstall  
+  dpkg -x libc6-dev_2.24-11+deb9u3_amd64.deb fakeInstall
+  dpkg -x libgcc1_6.3.0-18+deb9u1_amd64.deb fakeInstall
   ``` 
   (update the versions to yours)
   
@@ -38,7 +39,7 @@ You should download the deb packages for your system (64bit instead of 32bit) in
   ```
 - Basically the preparation is finished.  
   So let's install [qemu](https://www.qemu.org/). Luckily it's in the default apt list  
-  (at least on `stretch`):
+  (at least on debian `stretch`):
   
   ```bash
   sudo apt-get update
@@ -49,8 +50,12 @@ You should download the deb packages for your system (64bit instead of 32bit) in
   ```bash
   mv $ANDROID_HOME/build-tools/28.0.1/aapt2 $ANDROID_HOME/build-tools/28.0.1/_aapt2
   ```
-  Now move the aapt2 script from this gist into  
+  Now move the aapt2 script from this repo into  
   `$ANDRID_HOME/build-tools/28.0.1/`
+  and give it execution permission by
+  ```bash
+  chmod +x $ANDROID_HOME/build-tools/28.0.1/aapt2
+  ```
   
   If you don't have a global ANDROID_HOME variable replace it with the corresponding path.  
   Replace the build-tools version with yours!
