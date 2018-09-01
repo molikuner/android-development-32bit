@@ -1,5 +1,2 @@
 #!/bin/sh
-
-[ -p /dev/stdin ] && echo "ERROR: this wrapper doesn't support piping" && exit 1
-
-sudo -- qemu-x86_64 `dirname $0`/_aapt2 $@
+exec `which qemu-x86_64` "`dirname \"$0\"`/_aapt2" $@
