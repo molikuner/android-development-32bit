@@ -16,7 +16,7 @@ Those are in `/lib/x86_64-linux-gnu`.
 Obviously these libraries won't be found on a 32bit system because they are for 64bit.
 This means installing them with apt will be difficult (at least I don't know how).
 
-- You will need [libc6](https://packages.debian.org/stretch/amd64/libc6), [libc6-dev](https://packages.debian.org/stretch/amd64/libc6-dev) and [libgcc1](https://packages.debian.org/stretch/amd64/libgcc1).
+- You will need [libc6](https://packages.debian.org/stretch/amd64/libc6), [libc6-dev](https://packages.debian.org/stretch/amd64/libc6-dev), [zlib1g](https://packages.debian.org/stretch/amd64/zlib1g) and [libgcc1](https://packages.debian.org/stretch/amd64/libgcc1).
 You should download the deb packages for your system (64bit instead of 32bit) into a new working folder.
 - Create a folder `fakeInstall` in this folder.
 - Now run:
@@ -24,6 +24,7 @@ You should download the deb packages for your system (64bit instead of 32bit) in
   ```bash
   dpkg -x libc6_2.24-11+deb9u3_amd64.deb fakeInstall
   dpkg -x libc6-dev_2.24-11+deb9u3_amd64.deb fakeInstall
+  dpkg -x zlib1g_1.2.8.dfsg-5_amd64.deb fakeInstall
   dpkg -x libgcc1_6.3.0-18+deb9u1_amd64.deb fakeInstall
   ``` 
   (update the versions to yours)
