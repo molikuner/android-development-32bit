@@ -44,22 +44,26 @@ You should download the deb packages for your system (64bit instead of 32bit) in
   
   ```bash
   sudo apt-get update
-  sudo apt-get install qemu
+  sudo apt-get install qemu qemu-user
   ```
 - Last thing to do is to use `qemu` with `aapt2` instead of only `aapt2`
 
   ```bash
   mv $ANDROID_HOME/build-tools/28.0.1/aapt2 $ANDROID_HOME/build-tools/28.0.1/_aapt2
   ```
-  Now move the aapt2 script from this repo into  
-  `$ANDRID_HOME/build-tools/28.0.1/`
-  and give it execution permission by
+  Now move the aapt2 script from this repo into `$ANDRID_HOME/build-tools/28.0.1/` and give it execution permission by
   ```bash
   chmod +x $ANDROID_HOME/build-tools/28.0.1/aapt2
   ```
   
   If you don't have a global ANDROID_HOME variable replace it with the corresponding path.  
   Replace the build-tools version with yours!
+  
+  At some installations / in newer versions you also need to replace the `aapt2` in
+  `~/.gradle/caches/transforms-*/files-*/aapt2-*-linux.jar/*/aapt2-*-linux/` like above.
+  This is a cache which means you need to try to build it and replace it afterwards.  
+  The `*` needs to be replaced with your specific versions (there should be only one at first).
+  
 - That's it. You can now build on 32bit Linux apps for Android.  
   Your working folder can be deleted. There is no reference to it.
 
